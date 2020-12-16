@@ -14,7 +14,7 @@ yarn install
 ```
 ### Build l'extension
 
-``` 
+```
 yarn build
 ```
 
