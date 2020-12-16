@@ -1,3 +1,33 @@
 .app {
   font-weight: 700;
+  text-align: center;
+  &__button {
+    border: none;
+    max-width: 200px;
+    width: 100%;
+    padding: 12px;
+    cursor: pointer;
+    background-color: rgb(117, 204, 117);
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    &:hover {
+      background-color: rgb(80, 177, 80);
+    }
+  }
+  &__photo {
+    display: block;
+    margin: 0 auto;
+    max-height: 200px;
+    border-radius: 16px;
+  }
+  &__input {
+    box-sizing: border-box;
+    border: 1px solid #888;
+    min-width: 200px;
+    padding: 8px;
+    border-radius: 4px;
+    margin: 24px 0;
+  }
 }

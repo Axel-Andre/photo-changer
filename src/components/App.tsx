@@ -1,20 +1,34 @@
 import React from "react";
+import { getPhoto, setPhoto } from "../utils/actions";
 import "./App.scss";
 
-export class App extends React.Component<{}> {
-  public componentDidMount() {
-    if (chrome && chrome.tabs) {
-      chrome.tabs.query({ currentWindow: true, active: true }, tabs => {
-        const tab = tabs[0];
-        chrome.tabs.sendMessage(tab.id || 0, { from: "popup", subject: "getFullName" }, response => {
-          console.log(response);
-        });
-      });
-    }
+export class App extends React.Component<{}, { url: string }> {
+  state = {
+    url: ''
+  }
+  componentDidMount = () => {
+    getPhoto((url) => {
+      this.setState({ url: url });
+    });
+  }
+  handleClick = () => {
+    const { url } = this.state;
+    setPhoto(url);
   }
 
   render() {
-    return <div className="app">Hello world</div>;
+    return <div className="app">
+      <h1>Photo changer</h1>
+      {this.state.url && <img src={this.state.url} className="app__photo"/>}
+      <input type="text" className="app__input" onChange={(event) => this.setState({ url: event.target.value })} />
+      <br />
+      <button
+        onClick={this.handleClick}
+        className="app__button"
+      >
+        Change picture
+      </button>
+    </div>;
   }
 }
 

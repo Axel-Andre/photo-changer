@@ -21,8 +21,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "concurrently \"react-scripts build\" yarn:chrome",
-    "chrome": "tsc --build ./src/scripts/tsconfig.json"
+    "build": "react-scripts build && tsc --build ./src/scripts/tsconfig.json"
   },
   "eslintConfig": {
     "extends": "react-app"
