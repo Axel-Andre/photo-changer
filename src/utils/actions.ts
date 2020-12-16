@@ -1,12 +1,8 @@
-import { SetStateAction } from "react";
-
-export function setPhoto(url: string) {
+export function setPhoto(url: string): void {
     if (chrome && chrome.tabs) {
         chrome.tabs.query({ currentWindow: true, active: true }, tabs => {
             const tab = tabs[0];
-            chrome.tabs.sendMessage(tab.id || 0, { from: 'popup', subject: 'setPhoto', url: url }, response => {
-                console.log(response);
-            })
+            chrome.tabs.sendMessage(tab.id || 0, { from: 'popup', subject: 'setPhoto', url: url })
         })
     }
 }
